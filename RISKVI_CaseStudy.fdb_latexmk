@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1681881030 "c:/Users/Jonathan/OneDrive - University of Utah/Desktop/ECE/ECE3030_FinalReport/RISKVI_CaseStudy.tex" "RISKVI_CaseStudy.pdf" "RISKVI_CaseStudy" 1681881030 0
+["pdflatex"] 1681923950 "c:/Users/Jonathan/OneDrive - University of Utah/Desktop/ECE/ECE3030_FinalReport/RISKVI_CaseStudy.tex" "RISKVI_CaseStudy.pdf" "RISKVI_CaseStudy" 1681923951 0
   "C:/Users/Jonathan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1681879642 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Jonathan/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1681879618 23180376 d76e2ba056936177bd70c188ed19c6b3 ""
   "C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 1194fb36dfcb11d9ae9802f2b00b60a3 ""
@@ -75,9 +75,10 @@
   "C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/tex/latex/psnfss/ot1ptm.fd" 1585253778 1007 39eda417ef5837ce5e38661cfad2cedf ""
   "C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1656236890 56148 51a9a8571c07b9921892ae11063ae853 ""
   "IEEEtran.cls" 1681881020 288304 b67b6fc6c2abb39f9b461923f5199343 ""
-  "RISKVI_CaseStudy.aux" 1681881030 2344 08be4ecee0f8db7ec8648a61d3867735 "pdflatex"
-  "c:/Users/Jonathan/OneDrive - University of Utah/Desktop/ECE/ECE3030_FinalReport/RISKVI_CaseStudy.tex" 1681881020 14104 3471643278f9815362d75ca6a0c95055 ""
+  "RISKVI_CaseStudy.aux" 1681923951 2481 f36520620e43151a5f25a0e653ea842b "pdflatex"
+  "c:/Users/Jonathan/OneDrive - University of Utah/Desktop/ECE/ECE3030_FinalReport/RISKVI_CaseStudy.tex" 1681923950 16990 cd557903456cb830f1afa575c91cc3a8 ""
   "fig1.png" 1681881020 4535 3b4c70b1b9361fad686e8d234c8fe506 ""
+  "nanosat.jpg" 1681921498 107145 2086ec09c8124e9e93e9aba9e3c71a2f ""
   (generated)
   "RISKVI_CaseStudy.aux"
   "RISKVI_CaseStudy.log"

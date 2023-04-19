@@ -11,8 +11,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{RISKVI Case Study\\
-}
+\title{RISKVI Case Study\\}
 
 \author{\IEEEauthorblockN{Jonathan Wang}
 \IEEEauthorblockA{\textit{Electrical and Computer Engineering} \\
@@ -23,29 +22,58 @@ u1306458@umail.utah.edu}
 
 \maketitle
 
+% Abstract
 \begin{abstract}
-RISK-V FPGAs are gaining attentions from chip developers worldwide. 
+RISK-V FPGAs are attracting chip developers worldwide due to their open source and 
+ease of configuration. These FPGAs can be used in space applications. Implementing fast and reliable 
+hardware on nanosatellites had to be tested under extreme circumstances. This report evaluates the
+impact of the operating system on the reliability of RISC-V based FPGAs against configuration
+memory upsets. 
 \end{abstract}
-
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert
+RISC-V, FPGAs, nanosatellites, configuration memory upsets
 \end{IEEEkeywords}
 
+% Introduction
 \section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+Field-programmable gate arrays(FPGAs) are becoming attractive for nanosats due to the improvements in 
+performance and in-field reconfigurability of new generations of SRAM-based FPGAs. A nanosat or nanosatellite(Fig. 1)
+is anything that weighs between 1 and 10 kilograms. They are becoming attractive for space travel due to improvements 
+in performance and in-field reconfigurability. The software running on the FPGAs is called Embedded Operating System. 
+An Embedded OS is a specialized operating system designed to perform a specific task for a device that is not a 
+computer. The main job of an embedded OS is to run the code that allows the device to do its job, and it makes software 
+development easier. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 2.5]{nanosat.jpg}
+    \caption{A real life nanosat.}
+\end{figure}
+Current operating systems that are qualified for space missions are generally very costly. Consequently, general-purpose
+OS-powered nanosat missions, such as Linux systems, have been deployed in the past. Leppinen\cite{b1} stated that choosing 
+Linux limits the choice of hardware. Another major drawback is that Linux is not designed to be a real-time operating 
+system. A real-time operating system is an OS that guarantees real-time applications a certain capability within a specified 
+deadline. In some cases, design changes can reduce the number of hard real-time applications. The remaining constraints 
+require another dedicated controller to handle the real-time problem. 
 
-\section{Ease of Use}
+% Background clarification
+\section{Background}
+The reliability of these OSs for a given hardware platform needs to be evaluated before their actual deployment.
+Wali et al. \cite{b2} assessed the effects of the Linux OS on the fault tolerance of applications running on a RISC-V 
+SoC(System on Chip) implemented in a Xilinx FPGA. To address the evaluation of the effects, we need to define the 
+background. Although previous studies analyzed the fault tolerance of OS in embedded platforms, the following 
+report will focus on radiation-induced configuration memory upsets on the reliability of applications running on 
+a Linux RISC-V FPGA. Radiation-induced configuration memory upsets are a type of computer hardware failure caused 
+by exposure to ionizing radiation from space. The radiation can create a charge that alters the state of a memory 
+cell, causing a bit flip when the chip is exposed. It can result in errors in data storage or retrieval. In some
+cases, it can crash the system. 
+\subsection{FPGA Fault Injection}
+The method of testing is FPGA fault injection. It is defined as the validation technique of fault-tolerant 
+systems where the observation of the system's behavior in presence of faults is done explicitly by the 
+injection of faults in the system. Tawfeek et al. categorized the fault injection technique into three categories
+in \cite{b3}. In our case, 
 
-\subsection{Maintaining the Integrity of the Specifications}
 
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
+
 
 \section{Prepare Your Paper Before Styling}
 Before you begin to format your paper, first write and save the content as a 
@@ -238,9 +266,9 @@ For papers published in translation journals, please give the English
 citation first, followed by the original foreign-language citation \cite{b6}.
 
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
+\bibitem{b1} H. Leppinen, "Current use of linux in spacecraft flight software," in IEEE Aerospace and Electronic Systems Magazine, vol. 32, no. 10, pp. 4-13, October 2017, doi: 10.1109/MAES.2017.160182. 
+\bibitem{b2} I. Wali, A. Sánchez-Macián, A. Ramos and J. A. Maestro, "Analyzing the impact of the Operating System on the Reliability of a RISC-V FPGA Implementation," 2020 27th IEEE International Conference on Electronics, Circuits and Systems (ICECS), Glasgow, UK, 2020, pp. 1-4, doi: 10.1109/ICECS49266.2020.9294858.
+\bibitem{b3} R. M. Tawfeek, M. G. Egila, Y. Alkabani and I. M. Hafez, "Fault injection for FPGA applications in the space," 2017 12th International Conference on Computer Engineering and Systems (ICCES), Cairo, Egypt, 2017, pp. 390-395, doi: 10.1109/ICCES.2017.8275338.
 \bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
 \bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
 \bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
