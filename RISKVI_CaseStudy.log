@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.18)  19 APR 2023 11:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.19)  19 APR 2023 16:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -273,35 +273,21 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 <nanosat.jpg, id=1, 91.542pt x 65.2839pt>
 File: nanosat.jpg Graphic file (type jpg)
 <use nanosat.jpg>
-Package pdftex.def Info: nanosat.jpg  used on input line 48.
+Package pdftex.def Info: nanosat.jpg  used on input line 47.
 (pdftex.def)             Requested size: 228.85445pt x 163.20934pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 85.
- (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 85.
- (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{C:/Users/Jonathan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
+<fault_inject.jpg, id=2, 417.05812pt x 341.77687pt>
+File: fault_inject.jpg Graphic file (type jpg)
+<use fault_inject.jpg>
+Package pdftex.def Info: fault_inject.jpg  used on input line 87.
+(pdftex.def)             Requested size: 208.52855pt x 170.88802pt.
+ [1{C:/Users/Jonathan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
  <./nanosat.jpg>]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 120.
- (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [2]
-<fig1.png, id=18, 82.1469pt x 71.5473pt>
-File: fig1.png Graphic file (type png)
-<use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 225.
-(pdftex.def)             Requested size: 82.14668pt x 71.5471pt.
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 236.
- (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
-File: omsptm.fd 
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 105.
+ (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 236.
- [3 <./fig1.png (PNG copy)>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -313,21 +299,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4
+[2
 
-] (RISKVI_CaseStudy.aux) ) 
+ <./fault_inject.jpg>] (RISKVI_CaseStudy.aux) ) 
 Here is how much of TeX's memory you used:
- 4290 strings out of 476331
- 68612 string characters out of 5786349
- 1869660 words of memory out of 5000000
- 24677 multiletter control sequences out of 15000+600000
- 554216 words of font info for 109 fonts, out of 8000000 for 9000
+ 4192 strings out of 476331
+ 67272 string characters out of 5786349
+ 1864660 words of memory out of 5000000
+ 24610 multiletter control sequences out of 15000+600000
+ 541968 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,62p,673b,304s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RISKVI_CaseStudy.pdf (4 pages, 252044 bytes).
+ 57i,8n,62p,321b,266s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RISKVI_CaseStudy.pdf (2 pages, 239419 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
+ 32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

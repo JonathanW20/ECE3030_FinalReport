@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThe controller uses SEM IP(Soft Error Mitigation Intellectual Property) to inject SEUs(single event upsets) in the configuration memory of the Artix-7 FPGA.\\E$"}
