@@ -90,6 +90,17 @@ and resets the program for the following execution.
 The fault injection controller is located inside the host computer and utilizes Soft Error Mitigation Intellectual Property (SEM IP)
 to introduce single event upsets (SEUs) into the Artix-7 FPGA's configuration memory. Maillard et al. from Xilinx performed 
 a similar analysis\cite{b3} to simulate the impact of radiation on the FPGA, but they utilized a proton beam rather than actual radiation.
+\subsection{Benchmarks}
+The workloads for fault injection consist of five mathematical algorithms: Tower of Hanoi, Dijkstra's algorithm, Matrix multiplication, 
+Quicksort, and Mergesort. 
+
+The Tower of Hanoi is a puzzle game that requires moving a stack of disks from one peg to another peg with 
+the assistance of a third peg. The game operates under a set of rules: only one disk can be moved at a time, and a larger disk
+cannot be placed on top of a smaller disk. The algorithm ensures that the puzzle is solved in the minimum number of moves possible. 
+
+
+
+
 
 
 

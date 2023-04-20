@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.19)  19 APR 2023 16:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.19)  20 APR 2023 10:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -284,7 +284,7 @@ Package pdftex.def Info: fault_inject.jpg  used on input line 87.
 
 
  <./nanosat.jpg>]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 105.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 116.
  (C:\Users\Jonathan\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
@@ -299,9 +299,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
-
- <./fault_inject.jpg>] (RISKVI_CaseStudy.aux) ) 
+[2 <./fault_inject.jpg>] (RISKVI_CaseStudy.aux) ) 
 Here is how much of TeX's memory you used:
  4192 strings out of 476331
  67272 string characters out of 5786349
@@ -311,7 +309,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,8n,62p,321b,266s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jonathan/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RISKVI_CaseStudy.pdf (2 pages, 239419 bytes).
+Output written on RISKVI_CaseStudy.pdf (2 pages, 240538 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
