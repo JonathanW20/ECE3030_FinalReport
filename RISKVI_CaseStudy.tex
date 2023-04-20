@@ -26,8 +26,8 @@ u1306458@umail.utah.edu}
 RISK-V FPGAs are attracting chip developers worldwide due to their open source and 
 ease of configuration. These FPGAs can be used in space applications. Implementing fast and reliable 
 hardware on nanosatellites had to be tested under extreme circumstances. This report evaluates the
-impact of the operating system on the reliability of RISC-V based FPGAs against configuration
-memory upsets. 
+impact of the Linux operating system on the reliability of RISC-V based FPGAs, against bare metal mode 
+with memory upsets. 
 \end{abstract}
 \begin{IEEEkeywords}
 RISC-V, FPGAs, nanosatellites, configuration memory upsets
@@ -67,7 +67,7 @@ cell, causing a bit flip when the chip is exposed. It can result in errors in da
 cases, it can crash the system. 
 \subsection{FPGA Fault Injection} % Injection method
 The method employed is called FPGA fault injection. It is defined as the validation technique of fault-tolerant 
-systems where the observation of the system's behavior in presence of faults is done explicitly by 
+systems where the observation of the system's behavior in the presence of faults is done explicitly by 
 injecting faults into the system. Reference \cite{b2} pointed out that FPGAs are an ideal fault-emulation platform 
 due to their high logic density and reconfigurability. The FPGA consists of two layers, the user layer, and the configuration 
 layer. Partially Modifying the configuration layer can start the injection process. Tawfeek et al. categorized the fault 
@@ -75,36 +75,42 @@ injection technique into three categories in \cite{b4}. In our case, we will be 
 The objective is to inject errors at the software level. The injected error simulates those that may occur due to hardware faults. 
 
 % Experiment details
-\section{Experiment Setup and Overview}
+\section{Fault Injection Setup and Overview}
 The hardware the experiment uses includes an Artix-7 series FPGA from Xilinx Inc. and a host computer. 
 \subsection{Hardware Setup}
 Figure 2 shows the block diagram of the hardware setup. 
 The host computer is responsible for the fault injections and the debug software, which communicates with the FPGA's SoC
 through a debug interface. The interface controls the executions of workload programs, collection of data, logging the errors,
-and resets the program for the following execution.  
+and resets the program for the following execution. The workloads were tested both in bare-metal mode and with the Linux OS. 
+Bare-metal mode runs directly on the hardware of a computer without any operating system or other software layers in between. 
 \begin{figure}[h]
     \centering
     \includegraphics[scale = 0.5]{fault_inject.jpg}
     \caption{Block diagram of the fault injection setup.}
 \end{figure}
+
 The fault injection controller is located inside the host computer and utilizes Soft Error Mitigation Intellectual Property (SEM IP)
 to introduce single event upsets (SEUs) into the Artix-7 FPGA's configuration memory. Maillard et al. from Xilinx performed 
 a similar analysis\cite{b3} to simulate the impact of radiation on the FPGA, but they utilized a proton beam rather than actual radiation.
 \subsection{Benchmarks}
 The workloads for fault injection consist of five mathematical algorithms: Tower of Hanoi, Dijkstra's algorithm, Matrix multiplication, 
-Quick sort, and Merge sort. It's essential to know the runtime complexities of these algorithms because they can affect the fault 
-injection results. Runtime complexity means Table 1 shows the runtime complexities of the algorithms. 
+Quick sort, and Merge sort. It is essential to know the Big-O(runtime complexities) of these algorithms because they can affect the fault 
+injection results. Runtime complexity is a measure of how much time or space a program or algorithm takes to run as the input size increases. 
+An algorithm with high runtime complexity is more vulnerable due to its increased complexity. It is also more difficult to identify the 
+root cause of any observed failures. Table 1 shows the Big-O of the algorithms. 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale = 0.2]{runtime.jpg}
-    \caption{Benchmark algorithm's runtime complexity.}
+    \includegraphics[scale = 0.17]{runtime.jpg}
+    \caption{Workload's runtime complexity.}
 \end{figure}
+\subsection{Fault Models}
+There are a total of 10 fault injection campaigns in the experiment, and each campaign is carried out on 5 distinct workloads. Each fault injection 
+campaign injects bit-flips in 10,000 randomly selected essential bits in the memory. Faults are only injected in the configuration memory because
+it accounts for most of the on-chip memory, which is large enough that it is very sensitive to SEUs. This fault model has been proven in detail
+by \cite{b5}. 
 
-An algorithm with high runtime complexity is more vulnerable to faults since it is more complex. It is also 
-more difficult to identify the root cause of any observed failures.
-
-
-
+\section{Fault Injection Process}
+To begin the injection process, we first need to generate a faults-site list 
 
 
 % Citations
@@ -118,7 +124,8 @@ more difficult to identify the root cause of any observed failures.
      Effects Data Workshop (REDW), Waikoloa, HI, USA, 2018, pp. 1-5, doi: 10.1109/NSREC.2018.8584298.
     \bibitem{b4} R. M. Tawfeek, M. G. Egila, Y. Alkabani and I. M. Hafez, "Fault injection for FPGA applications in the space," 2017 12th
      International Conference on Computer Engineering and Systems (ICCES), Cairo, Egypt, 2017, pp. 390-395, doi: 10.1109/ICCES.2017.8275338.
-     
+    \bibitem{b5} L. Sterpone and M. Violante, "A New Partial Reconfiguration-Based Fault-Injection System to Evaluate SEU Effects in SRAM-Based
+     FPGAs," in IEEE Transactions on Nuclear Science, vol. 54, no. 4, pp. 965-970, Aug. 2007, doi: 10.1109/TNS.2007.904080.
     
 \end{thebibliography}
 
