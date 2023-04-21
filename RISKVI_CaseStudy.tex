@@ -26,11 +26,11 @@ u1306458@umail.utah.edu}
 RISK-V FPGAs are attracting chip developers worldwide due to their open source and 
 ease of configuration. These FPGAs can be used in space applications. Implementing fast and reliable 
 hardware on nanosatellites had to be tested under extreme circumstances. This report evaluates the
-impact of the Linux operating system on the reliability of RISC-V based FPGAs, against bare metal mode 
+impact of the tradition Linux operating system on the reliability of RISC-V-based FPGAs, against bare metal mode 
 with memory upsets. 
 \end{abstract}
 \begin{IEEEkeywords}
-RISC-V, FPGAs, nanosatellites, configuration memory upsets
+RISC-V, FPGAs, bare-metal, nanosatellites, configuration memory upsets
 \end{IEEEkeywords}
 
 % Introduction
@@ -51,7 +51,7 @@ Current operating systems that are qualified for space missions are generally ve
 OS-powered nanosat missions, such as Linux systems, have been deployed in the past. Leppinen \cite{b1} stated that choosing 
 Linux limits the choice of hardware. Another major drawback is that Linux is not designed to be a real-time operating 
 system. A real-time operating system is an OS that guarantees real-time applications a certain capability within a specified 
-deadline. In some cases, design changes can reduce the number of hard real-time applications. The remaining constraints 
+deadline. In some cases, design changes can reduce the number of challenging real-time applications. The remaining constraints 
 require another dedicated controller to handle the real-time problem. 
 
 % Background clarification
@@ -128,8 +128,12 @@ of errors encountered in each of the categories in the error log.
     \includegraphics[scale = 0.2]{results.jpg}
     \caption{Error frequencies of the algorithms.}
 \end{figure}
+The percentages of crashes and hangs show consistency between benchmarks on both bare-metal and with Linux OS. This shows that upsets are 
+primarily caused by the control functionallity, not the fault injections. However, SDCs and AIFs varies between benchmarks on both scenarios. 
+This suggests that the faults actually caused damage to the data. 
 
-
+Hangs occured the most in both bare-metal mode and with Linux OS. The main difference is that the error rate with Linux OS is approximately
+2.6 times higher than bare-metal mode. 
 
 % Citations
 \begin{thebibliography}{10}
