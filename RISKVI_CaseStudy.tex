@@ -83,7 +83,7 @@ The host computer is responsible for the fault injections and the debug software
 through a debug interface. The interface controls the executions of workload programs, collection of data, logging the errors,
 and resets the program for the following execution. The workloads were tested both in bare-metal mode and with the Linux OS. 
 Bare-metal mode runs directly on the hardware of a computer without any operating system or other software layers in between. 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[scale = 0.5]{fault_inject.jpg}
     \caption{Block diagram of the fault injection setup.}
@@ -109,8 +109,26 @@ campaign injects bit-flips in 10,000 randomly selected essential bits in the mem
 it accounts for most of the on-chip memory, which is large enough that it is very sensitive to SEUs. This fault model has been proven in detail
 by \cite{b5}. 
 
-\section{Fault Injection Process}
-To begin the injection process, we first need to generate a faults-site list 
+\section{Results Analysis}
+After the fault injection campaigns, the error log is categorized into the following categories:
+\begin{itemize}
+    \item Masked
+    \item Silent Data corruption(SDC)
+    \item Crash
+    \item Hang
+    \item Architectural Internal Failure(AIF)
+\end{itemize}
+Crashes and Hangs are single event functional interrupts, so a system reset was required to resume operation. SDCs and AIFs are tolerated in 
+consumer electronics, but are labeled as reliability threats in safety-critical systems. 
+
+50,000 injections were performed in total. The results of the injections are shown in Figure 4(a) and 4(b). Each bar represents the percentage 
+of errors encountered in each of the categories in the error log. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale = 0.2]{results.jpg}
+    \caption{Error frequencies of the algorithms.}
+\end{figure}
+
 
 
 % Citations
