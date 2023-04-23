@@ -25,12 +25,12 @@ u1306458@umail.utah.edu}
 \begin{abstract}
 RISK-V FPGAs are attracting chip developers worldwide due to their open source and 
 ease of configuration. These FPGAs can be used in space applications. Implementing fast and reliable 
-hardware on nanosatellites had to be tested under extreme circumstances. This report evaluates the
-impact of the tradition Linux operating system on the reliability of RISC-V-based FPGAs, against bare metal mode 
-with memory upsets. 
+hardware on nanosats(nanosatellites) had to be tested under extreme circumstances. This report evaluates the
+impact of the traditional Linux operating system on the reliability of RISC-V-based FPGAs, against bare metal mode 
+using fault injections to simulate the radiation effects on FPGAs. 
 \end{abstract}
 \begin{IEEEkeywords}
-RISC-V, FPGAs, bare-metal, nanosatellites, configuration memory upsets
+RISC-V, FPGAs, bare-metal, nanosatellites, fault injections
 \end{IEEEkeywords}
 
 % Introduction
@@ -97,7 +97,7 @@ The workloads for fault injection consist of five mathematical algorithms: Tower
 Quick sort, and Merge sort. It is essential to know the Big-O(runtime complexities) of these algorithms because they can affect the fault 
 injection results. Runtime complexity is a measure of how much time or space a program or algorithm takes to run as the input size increases. 
 An algorithm with high runtime complexity is more vulnerable due to its increased complexity. It is also more difficult to identify the 
-root cause of any observed failures. Table 1 shows the Big-O of the algorithms. 
+root cause of any observed failures. Figure 3 shows the Big-O of the algorithms. 
 \begin{figure}[ht]
     \centering
     \includegraphics[scale = 0.17]{runtime.jpg}
@@ -112,16 +112,16 @@ by \cite{b5}.
 \section{Results Analysis}
 After the fault injection campaigns, the error log is categorized into the following categories:
 \begin{itemize}
-    \item Masked
-    \item Silent Data corruption(SDC)
-    \item Crash
-    \item Hang
-    \item Architectural Internal Failure(AIF)
+    \item Masked: an error that is hidden or surppressed by other processes or software layers 
+    \item Silent data corruption(SDC): data errors that occur without any visible symptoms or error messages
+    \item Crash: an unexpected and abrupt termination of a software program due to an error/exception that stopped functioning
+    \item Hang: a state where a software program becomes unresponsive and stops processing 
+    \item Architectural Internal Failure(AIF): a software failure that occurs due to a flaw or error in the design or architecture of the software system itself
 \end{itemize}
-Crashes and Hangs are single event functional interrupts, so a system reset was required to resume operation. SDCs and AIFs are tolerated in 
-consumer electronics, but are labeled as reliability threats in safety-critical systems. 
+Crashes and Hangs are single-event functional interrupts, so a system reset was required to resume operation. SDCs and AIFs are tolerated in 
+consumer electronics but are labeled as reliability threats in safety-critical systems. 
 
-50,000 injections were performed in total. The results of the injections are shown in Figure 4(a) and 4(b). Each bar represents the percentage 
+50,000 injections were performed in total. The results of the injections are shown in Figures 4(a) and 4(b). Each bar represents the percentage 
 of errors encountered in each of the categories in the error log. 
 \begin{figure}[ht]
     \centering
@@ -129,11 +129,21 @@ of errors encountered in each of the categories in the error log.
     \caption{Error frequencies of the algorithms.}
 \end{figure}
 The percentages of crashes and hangs show consistency between benchmarks on both bare-metal and with Linux OS. This shows that upsets are 
-primarily caused by the control functionallity, not the fault injections. However, SDCs and AIFs varies between benchmarks on both scenarios. 
+primarily caused by the control functionality, not the fault injections. However, SDCs and AIFs vary between benchmarks in both scenarios. 
 This suggests that the faults actually caused damage to the data. 
 
-Hangs occured the most in both bare-metal mode and with Linux OS. The main difference is that the error rate with Linux OS is approximately
-2.6 times higher than bare-metal mode. 
+Hangs occurred the most in both bare-metal mode and with the Linux OS. The main difference is that the error rate with the OS is 
+approximately 2.6 times higher than with bare-metal mode. Crashes have the highest percentage in each benchmark in both categories. The 
+chances of crashes are 17.4 times higher when the Linux OS is present.
+
+Fewer AIFs appeared with Linux OS for all benchmark workloads. The reason is that some of the memory upsets affecting the processor memory 
+may be flagged by the OS as problems and resulted in crashes rather than AIFs. Similarly, the OS does not increase the SDC rate. In \cite{b6}, 
+Santini et al. also proved that the SDC rate is barely affected by the presence of Linux. Additionally, \cite{b7} goes into detail on why
+Linux does not significantly impact the SDC rate. 
+
+% Conclusion
+\section{Conclusion}
+
 
 % Citations
 \begin{thebibliography}{10}
@@ -148,7 +158,11 @@ Hangs occured the most in both bare-metal mode and with Linux OS. The main diffe
      International Conference on Computer Engineering and Systems (ICCES), Cairo, Egypt, 2017, pp. 390-395, doi: 10.1109/ICCES.2017.8275338.
     \bibitem{b5} L. Sterpone and M. Violante, "A New Partial Reconfiguration-Based Fault-Injection System to Evaluate SEU Effects in SRAM-Based
      FPGAs," in IEEE Transactions on Nuclear Science, vol. 54, no. 4, pp. 965-970, Aug. 2007, doi: 10.1109/TNS.2007.904080.
-    
+    \bibitem{b6} T. Santini, L. Carro, F. Rech Wagner and P. Rech, "Reliability Analysis of Operating Systems and Software Stack for Embedded 
+     Systems," in IEEE Transactions on Nuclear Science, vol. 63, no. 4, pp. 2225-2232, Aug. 2016, doi: 10.1109/TNS.2015.2513384.
+    \bibitem{b7} P. Bodmann, G. Papadimitriou, D. Gizopoulos and P. Rech, "Impact of Cores Integration and Operating System on ARM Processors 
+     Reliability: Micro-Architectural Fault-Injection vs Beam Experiments," 2020 20th European Conference on Radiation and Its Effects on 
+     Components and Systems (RADECS), Toulouse, France, 2020, pp. 1-4, doi: 10.1109/RADECS50773.2020.9857727.
 \end{thebibliography}
 
 \end{document}
