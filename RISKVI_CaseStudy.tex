@@ -23,9 +23,9 @@ u1306458@umail.utah.edu}
 
 % Abstract
 \begin{abstract}
-RISK-V FPGAs are attracting chip developers worldwide due to their open source and 
+RISK-V FPGAs are attracting developers worldwide due to their open source and 
 ease of configuration. These FPGAs can be used in space applications. Implementing fast and reliable 
-hardware on nanosats(nanosatellites) had to be tested under extreme circumstances. This report evaluates the
+hardware on nanosats(nanosatellites) had to be tested under extreme circumstances. This report highlights the
 impact of the traditional Linux operating system on the reliability of RISC-V-based FPGAs, against bare metal mode 
 using fault injections to simulate the radiation effects on FPGAs. 
 \end{abstract}
@@ -37,7 +37,7 @@ RISC-V, FPGAs, bare-metal, nanosatellites, fault injections
 \section{Introduction}
 Field-programmable gate arrays(FPGAs) are becoming attractive for nanosats due to the improvements in 
 performance and in-field reconfigurability of new generations of SRAM-based FPGAs. A nanosat or nanosatellite(Fig. 1)
-is anything that weighs between 1 and 10 kilograms. They are becoming attractive for space travel due to improvements 
+is any kind of satellite that weighs between 1 and 10 kilograms. They are becoming attractive for space travel due to improvements 
 in performance and in-field reconfigurability compared to traditional computer chips.
 The software running on the FPGAs is called Embedded Operating System. An Embedded OS is a specialized operating system
 designed to perform a specific task for a device that is not a computer. The main job of an embedded OS is to run the 
@@ -66,7 +66,7 @@ by exposure to ionizing radiation from space. The radiation can create a charge 
 cell, causing a bit flip when the chip is exposed. It can result in errors in data storage or retrieval. In some
 cases, it can crash the system. 
 \subsection{FPGA Fault Injection} % Injection method
-The method employed is called FPGA fault injection. It is defined as the validation technique of fault-tolerant 
+The method to simulate radiation-induced memory upsets is called FPGA fault injection. It is defined as the validation technique of fault-tolerant 
 systems where the observation of the system's behavior in the presence of faults is done explicitly by 
 injecting faults into the system. Reference \cite{b2} pointed out that FPGAs are an ideal fault-emulation platform 
 due to their high logic density and reconfigurability. The FPGA consists of two layers, the user layer, and the configuration 
@@ -76,10 +76,10 @@ The objective is to inject errors at the software level. The injected error simu
 
 % Experiment details
 \section{Fault Injection Setup and Overview}
-The hardware the experiment uses includes an Artix-7 series FPGA from Xilinx Inc. and a host computer. 
+The hardware the experiment utilizes includes an Artix-7 series FPGA from Xilinx Inc. and a host computer. 
 \subsection{Hardware Setup}
 Figure 2 shows the block diagram of the hardware setup. 
-The host computer is responsible for the fault injections and the debug software, which communicates with the FPGA's SoC
+The host PC is responsible for the fault injections and the debug software, which communicates with the FPGA's SoC
 through a debug interface. The interface controls the executions of workload programs, collection of data, logging the errors,
 and resets the program for the following execution. The workloads were tested both in bare-metal mode and with the Linux OS. 
 Bare-metal mode runs directly on the hardware of a computer without any operating system or other software layers in between. 
@@ -88,10 +88,11 @@ Bare-metal mode runs directly on the hardware of a computer without any operatin
     \includegraphics[scale = 0.5]{fault_inject.jpg}
     \caption{Block diagram of the fault injection setup.}
 \end{figure}
-
 The fault injection controller is located inside the host computer and utilizes Soft Error Mitigation Intellectual Property (SEM IP)
-to introduce single event upsets (SEUs) into the Artix-7 FPGA's configuration memory. Maillard et al. from Xilinx performed 
-a similar analysis\cite{b3} to simulate the impact of radiation on the FPGA, but they utilized a proton beam rather than actual radiation.
+to introduce single event upsets (SEUs) into the Artix-7 FPGA's configuration memory. SEM IP includes hardware and software solutions 
+that can detect and correct soft errors in real-time, and an SEU is a type of soft error that occurs when an electronic system is 
+exposed to high-energy particles or radiation. Maillard et al. from Xilinx performed a similar analysis\cite{b3} to simulate the 
+impact of radiation on the FPGA, but they utilized a proton beam rather than actual radiation.
 \subsection{Benchmarks}
 The workloads for fault injection consist of five mathematical algorithms: Tower of Hanoi, Dijkstra's algorithm, Matrix multiplication, 
 Quick sort, and Merge sort. It is essential to know the Big-O(runtime complexities) of these algorithms because they can affect the fault 
@@ -109,10 +110,11 @@ campaign injects bit-flips in 10,000 randomly selected essential bits in the mem
 it accounts for most of the on-chip memory, which is large enough that it is very sensitive to SEUs. This fault model has been proven in detail
 by \cite{b5}. 
 
+% Results analysis
 \section{Results Analysis}
 After the fault injection campaigns, the error log is categorized into the following categories:
 \begin{itemize}
-    \item Masked: an error that is hidden or surppressed by other processes or software layers 
+    \item Masked: an error that is hidden or suppressed by other processes or software layers 
     \item Silent data corruption(SDC): data errors that occur without any visible symptoms or error messages
     \item Crash: an unexpected and abrupt termination of a software program due to an error/exception that stopped functioning
     \item Hang: a state where a software program becomes unresponsive and stops processing 
@@ -133,21 +135,25 @@ primarily caused by the control functionality, not the fault injections. However
 This suggests that the faults actually caused damage to the data. 
 
 Hangs occurred the most in both bare-metal mode and with the Linux OS. The main difference is that the error rate with the OS is 
-approximately 2.6 times higher than with bare-metal mode. Crashes have the highest percentage in each benchmark in both categories. The 
-chances of crashes are 17.4 times higher when the Linux OS is present.
+approximately 2.6 times higher than with bare-metal mode. Additionally, crashes have the highest percentage in each benchmark in both categories. 
+The chances of crashes are 17.4 times higher when the Linux OS is present. There are numerous causes why the rates are significantly higher for
+hangs and crashes. First, the Linux operating system is designed to support a wide range of hardware and software components, which can introduce 
+compatibility issues with the FPGA hardware. Second, running Linux uses a kernel and drivers, which adds a layer of complexity to the system. 
+Third, Linux uses a virtual memory system that requires hardware support from the FPGA, and implementing this correctly can be challenging, and 
+errors can lead to system instability.
 
-Fewer AIFs appeared with Linux OS for all benchmark workloads. The reason is that some of the memory upsets affecting the processor memory 
-may be flagged by the OS as problems and resulted in crashes rather than AIFs. Similarly, the OS does not increase the SDC rate. In \cite{b6}, 
-Santini et al. also proved that the SDC rate is barely affected by the presence of Linux. Additionally, \cite{b7} goes into detail on why
-Linux does not significantly impact the SDC rate. 
+Fewer AIFs appeared with Linux OS for all benchmark workloads. The reason is that some memory upsets affecting the processor memory 
+may be flagged by the OS as problems and resulted in crashes rather than AIFs. SDCs primarily depends on the design and implementation of the error 
+detection and correction mechanisms. Similarly, the OS does not increase the SDC rate. In \cite{b6}, Santini et al. also proved that the SDC 
+rate is barely affected by the presence of Linux. Additionally, \cite{b7} goes into detail on why Linux does not significantly impact the SDC rate. 
 
 % Conclusion
 \section{Conclusion}
-In conclusion, the open-source and the ease of configuration nature of RISK-V FPGAs have made them a popular choice among chip developers. 
-The use of these FPGAs in space applications is also gaining attraction. As a result, it is crucial to evaluate their reliability under extreme 
+In conclusion, the open-source and the ease of configuration nature of RISK-V FPGAs have made them a popular choice among developers. 
+The use of these FPGAs in nanosats is also gaining attraction. As a result, it is crucial to evaluate their reliability under extreme 
 circumstances. This report examined the impact of the Linux operating system on the reliability of RISC-V-based FPGAs compared 
-to bare metal mode. Through the use of fault injections to simulate the radiation effects on FPGAs, this report presented the reliability of 
-RISK-V FPGAs in space applications and provided insights on various errors.
+to bare metal mode. Through the use of fault injections to simulate the radiation effects on FPGAs, we gained more understanding of 
+the difference between a Linux-run FPGA compared to a bare metal RISC-V-based FPGA. 
 
 % Citations
 \begin{thebibliography}{10}
