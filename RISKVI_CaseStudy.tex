@@ -30,7 +30,7 @@ impact of the traditional Linux operating system on the reliability of RISC-V-ba
 using fault injections to simulate the radiation effects on FPGAs. 
 \end{abstract}
 \begin{IEEEkeywords}
-RISC-V, FPGAs, bare-metal, nanosatellites, fault injections
+bare-metal, fault injections, FPGAs, Linux, nanosatellites, RISC-V
 \end{IEEEkeywords}
 
 % Introduction
@@ -71,7 +71,7 @@ systems where the observation of the system's behavior in the presence of faults
 injecting faults into the system. Reference \cite{b2} pointed out that FPGAs are an ideal fault-emulation platform 
 due to their high logic density and reconfigurability. The FPGA consists of two layers, the user layer, and the configuration 
 layer. Partially Modifying the configuration layer can start the injection process. Tawfeek et al. categorized the fault 
-injection technique into three categories in \cite{b4}. In our case, we will be using software-based injection. 
+injection technique into three categories in \cite{b7}. In our case, we will be using software-based injection. 
 The objective is to inject errors at the software level. The injected error simulates those that may occur due to hardware faults. 
 
 % Experiment details
@@ -91,7 +91,7 @@ Bare-metal mode runs directly on the hardware of a computer without any operatin
 The fault injection controller is located inside the host computer and utilizes Soft Error Mitigation Intellectual Property (SEM IP)
 to introduce single event upsets (SEUs) into the Artix-7 FPGA's configuration memory. SEM IP includes hardware and software solutions 
 that can detect and correct soft errors in real-time, and an SEU is a type of soft error that occurs when an electronic system is 
-exposed to high-energy particles or radiation. Maillard et al. from Xilinx performed a similar analysis\cite{b3} to simulate the 
+exposed to high-energy particles or radiation. Maillard et al. from Xilinx performed a similar analysis\cite{b5} to simulate the 
 impact of radiation on the FPGA, but they utilized a proton beam rather than actual radiation.
 \subsection{Benchmarks}
 The workloads for fault injection consist of five mathematical algorithms: Tower of Hanoi, Dijkstra's algorithm, Matrix multiplication, 
@@ -108,7 +108,7 @@ root cause of any observed failures. Figure 3 shows the Big-O of the algorithms.
 There are a total of 10 fault injection campaigns in the experiment, and each campaign is carried out on 5 distinct workloads. Each fault injection 
 campaign injects bit-flips in 10,000 randomly selected essential bits in the memory. Faults are only injected in the configuration memory because
 it accounts for most of the on-chip memory, which is large enough that it is very sensitive to SEUs. This fault model has been proven in detail
-by \cite{b5}. 
+by \cite{b3}. 
 
 % Results analysis
 \section{Results Analysis}
@@ -145,7 +145,7 @@ errors can lead to system instability.
 Fewer AIFs appeared with Linux OS for all benchmark workloads. The reason is that some memory upsets affecting the processor memory 
 may be flagged by the OS as problems and resulted in crashes rather than AIFs. SDCs primarily depends on the design and implementation of the error 
 detection and correction mechanisms. Similarly, the OS does not increase the SDC rate. In \cite{b6}, Santini et al. also proved that the SDC 
-rate is barely affected by the presence of Linux. Additionally, \cite{b7} goes into detail on why Linux does not significantly impact the SDC rate. 
+rate is barely affected by the presence of Linux. Additionally, \cite{b4} goes into detail on why Linux does not significantly impact the SDC rate. 
 
 % Conclusion
 \section{Conclusion}
@@ -162,17 +162,17 @@ the difference between a Linux-run FPGA compared to a bare metal RISC-V-based FP
     \bibitem{b2} I. Wali, A. Sánchez-Macián, A. Ramos and J. A. Maestro, "Analyzing the impact of the Operating System on the Reliability
      of a RISC-V FPGA Implementation," 2020 27th IEEE International Conference on Electronics, Circuits and Systems (ICECS), Glasgow, UK, 2020,
      pp. 1-4, doi: 10.1109/ICECS49266.2020.9294858.
-    \bibitem{b3} P. Maillard et al., "Single-Event Evaluation of Xilinx 16nm UltraScale+™ Single Event Mitigation IP," 2018 IEEE Radiation 
-     Effects Data Workshop (REDW), Waikoloa, HI, USA, 2018, pp. 1-5, doi: 10.1109/NSREC.2018.8584298.
-    \bibitem{b4} R. M. Tawfeek, M. G. Egila, Y. Alkabani and I. M. Hafez, "Fault injection for FPGA applications in the space," 2017 12th
-     International Conference on Computer Engineering and Systems (ICCES), Cairo, Egypt, 2017, pp. 390-395, doi: 10.1109/ICCES.2017.8275338.
-    \bibitem{b5} L. Sterpone and M. Violante, "A New Partial Reconfiguration-Based Fault-Injection System to Evaluate SEU Effects in SRAM-Based
+    \bibitem{b3} L. Sterpone and M. Violante, "A New Partial Reconfiguration-Based Fault-Injection System to Evaluate SEU Effects in SRAM-Based
      FPGAs," in IEEE Transactions on Nuclear Science, vol. 54, no. 4, pp. 965-970, Aug. 2007, doi: 10.1109/TNS.2007.904080.
-    \bibitem{b6} T. Santini, L. Carro, F. Rech Wagner and P. Rech, "Reliability Analysis of Operating Systems and Software Stack for Embedded 
-     Systems," in IEEE Transactions on Nuclear Science, vol. 63, no. 4, pp. 2225-2232, Aug. 2016, doi: 10.1109/TNS.2015.2513384.
-    \bibitem{b7} P. Bodmann, G. Papadimitriou, D. Gizopoulos and P. Rech, "Impact of Cores Integration and Operating System on ARM Processors 
+    \bibitem{b4} P. Bodmann, G. Papadimitriou, D. Gizopoulos and P. Rech, "Impact of Cores Integration and Operating System on ARM Processors 
      Reliability: Micro-Architectural Fault-Injection vs Beam Experiments," 2020 20th European Conference on Radiation and Its Effects on 
      Components and Systems (RADECS), Toulouse, France, 2020, pp. 1-4, doi: 10.1109/RADECS50773.2020.9857727.
+    \bibitem{b5} P. Maillard et al., "Single-Event Evaluation of Xilinx 16nm UltraScale+™ Single Event Mitigation IP," 2018 IEEE Radiation 
+     Effects Data Workshop (REDW), Waikoloa, HI, USA, 2018, pp. 1-5, doi: 10.1109/NSREC.2018.8584298.
+    \bibitem{b6} T. Santini, L. Carro, F. Rech Wagner and P. Rech, "Reliability Analysis of Operating Systems and Software Stack for Embedded 
+     Systems," in IEEE Transactions on Nuclear Science, vol. 63, no. 4, pp. 2225-2232, Aug. 2016, doi: 10.1109/TNS.2015.2513384.
+    \bibitem{b7} R. M. Tawfeek, M. G. Egila, Y. Alkabani and I. M. Hafez, "Fault injection for FPGA applications in the space," 2017 12th
+     International Conference on Computer Engineering and Systems (ICCES), Cairo, Egypt, 2017, pp. 390-395, doi: 10.1109/ICCES.2017.8275338.
 \end{thebibliography}
 
 \end{document}
